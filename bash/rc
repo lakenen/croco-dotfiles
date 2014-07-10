@@ -9,10 +9,6 @@ fi
 
 source $rcfiles/bash/colors
 
-export HISTCONTROL=ignoreboth
-shopt -s histappend
-shopt -s checkwinsize
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     if [ -f ~/.dir_colors ]; then
@@ -74,3 +70,29 @@ fi
 
 unset rcfiles
 unset system
+
+
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoreboth
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+shopt -s checkwinsize
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+    shopt -s "$option" 2> /dev/null
+done
