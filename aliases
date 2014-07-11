@@ -4,3 +4,15 @@ alias ll='ls -al'
 alias la='ls -A'
 
 alias homeshick="$HOME/.homesick/repos/homeshick/home/.homeshick"
+
+
+# git typos
+alias gti='git'
+alias got='git'
+
+# Easier navigation: .., ..., ...., ....., and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
